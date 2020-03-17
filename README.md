@@ -1,6 +1,6 @@
 vim8\_install
 =============
-Ansible role that installs Vim 8 from source-master on EL 7 Linux. Installs to
+Ansible role to install Vim 8 from source-master on EL 7 Linux. Installs to
 `/usr/local/bin/vim`.
 
 Requirements
