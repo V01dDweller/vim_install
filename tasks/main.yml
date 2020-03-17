@@ -1,0 +1,52 @@
+# vim8_install/tasks/main.yml
+---
+- name: Gathering facts
+  setup:
+
+- name: Assert that this is EL 7 Linux
+  assert:
+    that:
+      - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
+      - ansible_distribution_major_version == "7"
+    success_msg: '{{ ansible_distribution }} {{ ansible_distribution_version }} detected, installing Vim from source'
+    fail_msg: 'This role only supports CentOS 7 or RHEL 7 for now'
+
+- name: Checking for existing Vim 8
+  stat:
+    path: /usr/local/bin/vim
+  register: vimcheck
+
+- name: Installing Vim
+  block:
+  - name: Installing dependencies
+    yum:
+      name:
+        - autoconf
+        - gcc
+        - git
+        - make
+        - ncurses-devel
+        - automake
+      state: installed
+
+  - name: Cloning Vim Github repo
+    git:
+      repo: https://github.com/vim/vim.git
+      version: master
+      dest: /tmp/vim8
+
+  - name: Running make
+    make:
+      chdir: /tmp/vim8/src
+
+  - name: Running make install
+    make:
+      chdir: /tmp/vim8/src
+      target: install
+
+  - name: Cleaning up
+    file:
+      path: /tmp/vim8
+      state: absent
+  when: not vimcheck.stat.exists
+...
