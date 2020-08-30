@@ -18,35 +18,35 @@
 
 - name: Installing Vim
   block:
-  - name: Installing dependencies
-    yum:
-      name:
-        - autoconf
-        - gcc
-        - git
-        - make
-        - ncurses-devel
-        - automake
-      state: installed
+    - name: Installing dependencies
+      yum:
+        name:
+          - autoconf
+          - gcc
+          - git
+          - make
+          - ncurses-devel
+          - automake
+        state: installed
 
-  - name: Cloning Vim Github repo
-    git:
-      repo: https://github.com/vim/vim.git
-      version: master
-      dest: /tmp/vim8
+    - name: Cloning Vim Github repo
+      git:
+        repo: https://github.com/vim/vim.git
+        version: master
+        dest: /tmp/vim8
 
-  - name: Running make
-    make:
-      chdir: /tmp/vim8/src
+    - name: Running make
+      make:
+        chdir: /tmp/vim8/src
 
-  - name: Running make install
-    make:
-      chdir: /tmp/vim8/src
-      target: install
+    - name: Running make install
+      make:
+        chdir: /tmp/vim8/src
+        target: install
 
-  - name: Cleaning up
-    file:
-      path: /tmp/vim8
-      state: absent
+    - name: Cleaning up
+      file:
+        path: /tmp/vim8
+        state: absent
   when: not vimcheck.stat.exists
 ...
