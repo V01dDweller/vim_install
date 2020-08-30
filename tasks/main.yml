@@ -49,4 +49,13 @@
         path: /tmp/vim8
         state: absent
   when: not vimcheck.stat.exists
+
+- name: Creating /etc/profile.d/vim.sh
+  copy:
+    content: |
+      PATH=/usr/local/bin:$PATH;export PATH
+    dest: /etc/profile.d/vim.sh
+    owner: root
+    group: root
+    mode: 0644
 ...
