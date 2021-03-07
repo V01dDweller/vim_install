@@ -33,6 +33,7 @@
       git:
         repo: https://github.com/vim/vim.git
         version: master
+        depth: 1
         dest: /tmp/vim8
 
     - name: Running make
