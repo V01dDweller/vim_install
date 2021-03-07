@@ -6,10 +6,10 @@
 - name: Assert that this is EL 7 Linux
   assert:
     that:
-      - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
-      - ansible_distribution_major_version == "7"
-    success_msg: 'EL 7 detected, installing Vim from source'
-    fail_msg: 'This role only supports CentOS 7 or RHEL 7 for now'
+      - ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+      - ansible_distribution_major_version == '7'
+    success_msg: EL 7 detected, installing Vim from source
+    fail_msg: This role only supports CentOS 7 or RHEL 7 for now
 
 - name: Checking for existing Vim 8
   stat:
