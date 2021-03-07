@@ -5,16 +5,14 @@ Ansible role. Installs Vim 8 from source-master on EL 7 Linux to
 
 Requirements
 ------------
-* Internet connection
+- Internet connection
 
 Dependencies
 ------------
-
 None.
 
 Example Usage
 -------------
-
 **1. Install the role**
 ```cmd
 ansible-galaxy install V01dDweller.vim8_install
@@ -44,13 +42,13 @@ touch vim_install.yml
       tags: vim
 ```
 
-**3. Run the Playbook **
+**3. Run the Playbook**
 
 ```cmd
 ansible-playbook vim_install.yml
 ```
 
-**4. Validate **
+**4. Validate**
 
 ```
 $vim -version
@@ -61,11 +59,9 @@ More info with: "vim -h"
 
 License
 -------
-
 BSD
 
 Author Information
 ------------------
-
 Written by V01dDweller in 2020.
 
