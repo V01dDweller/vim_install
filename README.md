@@ -9,7 +9,9 @@ Ansible role. Installs Vim from source-master on EL 7 Linux to
 
 * Internet connection
 * Ansible user must be able to sudo to root
+
 ## Dependencies
+
 None.
 
 ## Example Usage
@@ -60,8 +62,9 @@ More info with: "vim -h"
 ```
 
 ## License
+
 BSD
 
-Written by V01dDweller in 2020.
 ## Author Information
 
+By V01dDweller
