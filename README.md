@@ -5,9 +5,10 @@
 Ansible role. Installs Vim from source-master on EL 7 Linux to
 `/usr/local/bin/vim`.
 
-- Internet connection
 ## Requirements
 
+* Internet connection
+* Ansible user must be able to sudo to root
 ## Dependencies
 None.
 
