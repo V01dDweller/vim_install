@@ -1,10 +1,10 @@
 # vim8_install/tasks/main.yml
 ---
 - name: Gathering facts
-  setup:
+  ansible.builtin.setup:
 
 - name: Assert that this is EL 7 Linux
-  assert:
+  ansible.builtin.assert:
     that:
       - ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
       - ansible_distribution_major_version == '7'
@@ -12,14 +12,14 @@
     fail_msg: This role only supports CentOS 7 or RHEL 7 for now
 
 - name: Checking for existing Vim 8
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/vim
   register: vimcheck
 
 - name: Installing Vim
   block:
     - name: Installing dependencies
-      yum:
+      ansible.builtin.yum:
         name:
           - autoconf
           - gcc
@@ -30,29 +30,29 @@
         state: installed
 
     - name: Cloning Vim Github repo
-      git:
+      ansible.builtin.git:
         repo: https://github.com/vim/vim.git
         version: master
         depth: 1
         dest: /tmp/vim8
 
     - name: Running make
-      make:
         chdir: /tmp/vim8/src
+      community.general.make:
 
     - name: Running make install
-      make:
         chdir: /tmp/vim8/src
+      community.general.make:
         target: install
 
     - name: Cleaning up
-      file:
         path: /tmp/vim8
+      ansible.builtin.file:
         state: absent
   when: not vimcheck.stat.exists
 
 - name: Creating /etc/profile.d/vim.sh
-  copy:
+  ansible.builtin.copy:
     content: |
       PATH=/usr/local/bin:$PATH;export PATH
     dest: /etc/profile.d/vim.sh
