@@ -1,4 +1,4 @@
-# vim8_install/tasks/main.yml
+# tasks/main.yml
 ---
 - name: Gathering facts
   setup:
