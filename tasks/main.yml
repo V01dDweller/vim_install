@@ -25,8 +25,8 @@
           - ncurses-devel
           - automake
         state: installed
-        when: detected_os is search('CentOS 7') or
-              detected_os is search('RedHat 7')
+      when: detected_os is search('CentOS 7') or
+            detected_os is search('RedHat 7')
 
     - name: Cloning Vim Github repo
       ansible.builtin.git:
