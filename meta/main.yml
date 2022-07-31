@@ -10,4 +10,7 @@ galaxy_info:
     - name: EL
       release:
         - '7'
+    - name: Ubuntu
+      release:
+        - all
 ...
