@@ -8,8 +8,7 @@ Ansible role. Installs Vim from source-master on EL 7 Linux to
 - Internet connection
 ## Requirements
 
-Dependencies
-------------
+## Dependencies
 None.
 
 **1. Install the role**
