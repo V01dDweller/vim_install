@@ -4,6 +4,9 @@
   ansible.builtin.setup:
     gather_subset: min
 
+- name: Setting detected_os
+  ansible.builtin.set_fact:
+    detected_os: '{{ ansible_distribution }} {{ ansible_distribution_version }}'
 
 - name: Checking for /usr/local/bin/vim
   ansible.builtin.stat:
@@ -22,6 +25,8 @@
           - ncurses-devel
           - automake
         state: installed
+        when: detected_os is search('CentOS 7') or
+              detected_os is search('RedHat 7')
 
     - name: Cloning Vim Github repo
       ansible.builtin.git:
