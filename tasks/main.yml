@@ -35,7 +35,7 @@
           - gcc
           - make
         state: present
-      when: detected_os is search('Ubuntu') or
+      when: detected_os is search('Ubuntu')
 
     - name: Cloning Vim Github repo
       git:
