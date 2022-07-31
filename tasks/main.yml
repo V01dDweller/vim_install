@@ -11,7 +11,7 @@
     success_msg: EL 7 detected, installing Vim from source
     fail_msg: This role only supports CentOS 7 or RHEL 7 for now
 
-- name: Checking for existing Vim 8
+- name: Checking for existing Vim
   ansible.builtin.stat:
     path: /usr/local/bin/vim
   register: vimcheck
@@ -34,20 +34,20 @@
         repo: https://github.com/vim/vim.git
         version: master
         depth: 1
-        dest: /tmp/vim8
+        dest: /tmp/vim
 
     - name: Running make
-        chdir: /tmp/vim8/src
       community.general.make:
+        chdir: /tmp/vim/src
 
     - name: Running make install
-        chdir: /tmp/vim8/src
       community.general.make:
+        chdir: /tmp/vim/src
         target: install
 
     - name: Cleaning up
-        path: /tmp/vim8
       ansible.builtin.file:
+        path: /tmp/vim
         state: absent
   when: not vimcheck.stat.exists
 
