@@ -12,9 +12,11 @@ Ansible role. Installs Vim from source-master on EL 7 Linux to
 ## Dependencies
 None.
 
-**1. Install the role**
-```cmd
 ## Example Usage
+
+**1. Install the role**
+
+```cmd
 ansible-galaxy install V01dDweller.vim8_install
 ```
 
