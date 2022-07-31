@@ -1,20 +1,17 @@
-vim8\_install
-=============
 Ansible role. Installs Vim 8 from source-master on EL 7 Linux to
+# vim8_install
 `/usr/local/bin/vim`.
 
-Requirements
-------------
 - Internet connection
+## Requirements
 
 Dependencies
 ------------
 None.
 
-Example Usage
--------------
 **1. Install the role**
 ```cmd
+## Example Usage
 ansible-galaxy install V01dDweller.vim8_install
 ```
 
@@ -57,11 +54,9 @@ Garbage after option argument: "-version"
 More info with: "vim -h"
 ```
 
-License
--------
+## License
 BSD
 
-Author Information
-------------------
 Written by V01dDweller in 2020.
+## Author Information
 
