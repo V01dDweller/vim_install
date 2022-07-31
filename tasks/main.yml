@@ -5,7 +5,7 @@
     gather_subset: min
 
 
-- name: Checking for existing Vim
+- name: Checking for /usr/local/bin/vim
   ansible.builtin.stat:
     path: /usr/local/bin/vim
   register: vimcheck
