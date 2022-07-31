@@ -28,6 +28,15 @@
       when: detected_os is search('CentOS 7') or
             detected_os is search('RedHat 7')
 
+    - name: Installing Ubuntu dependencies
+      apt:
+        name:
+          - clang
+          - gcc
+          - make
+        state: present
+      when: detected_os is search('Ubuntu') or
+
     - name: Cloning Vim Github repo
       git:
         repo: https://github.com/vim/vim.git
