@@ -15,7 +15,7 @@
 
 - name: Installing Vim
   block:
-    - name: Installing dependencies
+    - name: Installing EL7 dependencies
       yum:
         name:
           - autoconf
