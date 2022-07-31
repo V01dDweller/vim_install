@@ -9,5 +9,5 @@ galaxy_info:
   platforms:
     - name: EL
       release:
-        - 7
+        - '7'
 ...
