@@ -1,8 +1,8 @@
-# vim8_install
+# vim_install
 
 **Last updated**: 7/31/2022
 
-Ansible role. Installs Vim from source-master on EL 7 and Ubuntu Linux to
+Ansible role. Installs Vim from source-master on EL 7 or Ubuntu Linux to
 `/usr/local/bin/vim`.
 
 ## Requirements
