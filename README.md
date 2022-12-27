@@ -68,3 +68,5 @@ BSD
 ## Author Information
 
 By V01dDweller
+
+[modeline]: # ( vim: set textwidth=78 colorcolumn=80: )
