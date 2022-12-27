@@ -41,11 +41,11 @@ touch vim_install.yml
 ```yaml
 # file: vim_install.yml
 ---
-- name: Install Vim 8
+- name: Install Vim
   hosts: all
   become: true
   roles:
-    - role: V01dDweller.vim8_install
+    - role: V01dDweller.vim_install
       tags: vim
 ```
 
