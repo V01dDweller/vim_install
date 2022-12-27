@@ -19,14 +19,14 @@ None.
 ### 1. Install the role
 
 ```cmd
-ansible-galaxy install V01dDweller.vim8_install
+ansible-galaxy install V01dDweller.vim_install
 ```
 
 This installs the role to ~/.ansible/roles. Alternatively, use '-p' to install
 to another path, e.g.:
 
 ```cmd
-ansible-galaxy install V01dDweller.vim8_install -p <path-to-project>/roles
+ansible-galaxy install V01dDweller.vim_install -p <path-to-project>/roles
 ```
 
 ### 2. Create a short playbook
