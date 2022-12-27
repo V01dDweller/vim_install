@@ -1,22 +1,22 @@
 # tasks/main.yml
 ---
 - name: Gathering facts
-  setup:
+  ansible.builtin.setup:
     gather_subset: min
 
 - name: Setting detected_os
-  set_fact:
+  ansible.builtin.set_fact:
     detected_os: '{{ ansible_distribution }} {{ ansible_distribution_version }}'
 
 - name: Checking for /usr/local/bin/vim
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/vim
   register: vimcheck
 
 - name: Installing Vim
   block:
     - name: Installing EL7 dependencies
-      yum:
+      ansible.builtin.yum:
         name:
           - autoconf
           - gcc
@@ -29,7 +29,7 @@
             detected_os is search('RedHat 7')
 
     - name: Installing Ubuntu dependencies
-      apt:
+      ansible.builtin.apt:
         name:
           - clang
           - gcc
@@ -38,29 +38,29 @@
       when: detected_os is search('Ubuntu')
 
     - name: Cloning Vim Github repo
-      git:
+      ansible.builtin.git:
         repo: https://github.com/vim/vim.git
         version: master
         depth: 1
         dest: /tmp/vim
 
     - name: Running make
-      make:
+      community.general.make:
         chdir: /tmp/vim/src
 
     - name: Running make install
-      make:
+      community.general.make:
         chdir: /tmp/vim/src
         target: install
 
     - name: Cleaning up
-      file:
+      ansible.builtin.file:
         path: /tmp/vim
         state: absent
   when: not vimcheck.stat.exists
 
 - name: Creating /etc/profile.d/vim.sh
-  copy:
+  ansible.builtin.copy:
     content: |
       PATH=/usr/local/bin:$PATH;export PATH
     dest: /etc/profile.d/vim.sh
