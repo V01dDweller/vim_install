@@ -16,7 +16,7 @@ None.
 
 ## Example Usage
 
-**1. Install the role**
+### 1. Install the role
 
 ```cmd
 ansible-galaxy install V01dDweller.vim8_install
@@ -29,7 +29,8 @@ to another path, e.g.:
 ansible-galaxy install V01dDweller.vim8_install -p <path-to-project>/roles
 ```
 
-**2. Create a short playbook**
+### 2. Create a short playbook
+
 ```cmd
 touch vim_install.yml
 ```
@@ -46,15 +47,14 @@ touch vim_install.yml
       tags: vim
 ```
 
-**3. Run the Playbook**
+### 3. Run the Playbook
 
 ```cmd
 ansible-playbook vim_install.yml
 ```
 
-**4. Validate**
+### 4. Validate
 
-```
 ```cmd
 $ vim -version
 VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Mar 17 2020 02:51:26)
