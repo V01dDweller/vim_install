@@ -34,7 +34,9 @@ ansible-galaxy install V01dDweller.vim8_install -p <path-to-project>/roles
 ```cmd
 touch vim_install.yml
 ```
+
 ... and add the following:
+
 
 ```yaml
 # file: vim_install.yml
