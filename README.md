@@ -55,7 +55,8 @@ ansible-playbook vim_install.yml
 **4. Validate**
 
 ```
-$vim -version
+```cmd
+$ vim -version
 VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Mar 17 2020 02:51:26)
 Garbage after option argument: "-version"
 More info with: "vim -h"
