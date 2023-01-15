@@ -47,6 +47,8 @@
     - name: Running make
       community.general.make:
         chdir: /tmp/vim/src
+        params:
+          NUMTHREADS: 4
 
     - name: Running make install
       community.general.make:
