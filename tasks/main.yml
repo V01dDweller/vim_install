@@ -4,6 +4,7 @@
   ansible.builtin.setup:
     gather_subset: min
 
+# May be used latest for OS-specific differences
 - name: Setting detected_os
   ansible.builtin.set_fact:
     detected_os: '{{ ansible_distribution }} {{ ansible_distribution_version }}'
