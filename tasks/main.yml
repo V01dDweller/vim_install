@@ -9,10 +9,60 @@
   ansible.builtin.set_fact:
     detected_os: '{{ ansible_distribution }} {{ ansible_distribution_version }}'
 
-- name: Checking for /usr/local/bin/vim
+- name: Retrieving vim tags from GitHub
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/vim/vim/tags
+    method: GET
+    status_code: 200
+  register: vim_tags
+
+- name: Displaying most recent tag
+  ansible.builtin.debug:
+    msg: '{{ vim_tags.json[0].name }}'
+
+# These tasks split the latest GitHub tag in order to to pinch the 4 digit
+# build number from the end
+- name: Setting vim_latest_build_unplit fact
+  ansible.builtin.set_fact:
+    vim_latest_tag: '{{ vim_tags.json[0].name | split(".") }}'
+
+# This task saves that 4-digit build number
+- name: Setting vim_latest_build fact
+  ansible.builtin.set_fact:
+    vim_latest_build: '{{ vim_latest_tag[2] }}'
+
+- name: Displaying vim_latest_build
+  ansible.builtin.debug:
+    msg: '{{ vim_latest_build }}'
+
+- name: Checking for Vim in /usr/local/bin
   ansible.builtin.stat:
     path: /usr/local/bin/vim
   register: vimcheck
+
+# This tasks saves the 4-digit build number from the installed instance in
+# one step
+- name: Checking vim version
+  ansible.builtin.shell: |
+    set -o pipefail
+    /usr/local/bin/vim --version \
+    | grep "Included patches" \
+    | awk '{print $3}'|sed 's/1-//'
+  args:
+    executable: /bin/bash
+  register: vim_current_build
+  changed_when: false
+  when: vimcheck.stat.exists
+
+- name: Displaying current vim build
+  ansible.builtin.debug:
+    msg: '{{ vim_current_build.stdout }}'
+  when: vimcheck.stat.exists
+
+- name: Comparing vim versions
+  debug:
+    msg: "Vim needs updating"
+  when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
 - name: Installing Vim
   block:
@@ -60,7 +110,7 @@
       ansible.builtin.file:
         path: /tmp/vim
         state: absent
-  when: not vimcheck.stat.exists
+  when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
 - name: Creating /etc/profile.d/vim.sh
   ansible.builtin.copy:
