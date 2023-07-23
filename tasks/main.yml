@@ -61,6 +61,8 @@
 
 - name: Comparing vim versions
   debug:
+  when: not vimcheck.stat.exists or
+        vim_current_build.stdout != vim_latest_build
     msg: "Vim needs updating"
   when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
@@ -110,7 +112,6 @@
       ansible.builtin.file:
         path: /tmp/vim
         state: absent
-  when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
 - name: Creating /etc/profile.d/vim.sh
   ansible.builtin.copy:
