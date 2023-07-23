@@ -66,7 +66,7 @@
 
 - name: Installing Vim
   block:
-    - name: Installing EL7 dependencies
+    - name: Installing Enterprise Linux dependencies
       ansible.builtin.yum:
         name:
           - autoconf
