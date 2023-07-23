@@ -121,3 +121,4 @@
     group: root
     mode: 0644
 ...
+# vim: ft=ansible syntax=yaml.ansible
