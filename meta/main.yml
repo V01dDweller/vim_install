@@ -1,7 +1,7 @@
 # file: meta/main.yml
 ---
 galaxy_info:
-  author: V01dDweller
+  author: v01ddweller
   description: Install Vim from source
   company: The Galaxy Project
   license: AFL v3.0
