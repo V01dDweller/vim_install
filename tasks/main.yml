@@ -64,9 +64,10 @@
         vim_current_build.stdout != vim_latest_build
   ansible.builtin.debug:
     msg: "Vim needs updating"
-  when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
 - name: Installing Vim
+  when: not vimcheck.stat.exists or
+        vim_current_build.stdout != vim_latest_build
   block:
     - name: Installing Enterprise Linux dependencies
       ansible.builtin.yum:
