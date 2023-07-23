@@ -60,9 +60,9 @@
   when: vimcheck.stat.exists
 
 - name: Comparing vim versions
-  debug:
   when: not vimcheck.stat.exists or
         vim_current_build.stdout != vim_latest_build
+  ansible.builtin.debug:
     msg: "Vim needs updating"
   when: not vimcheck.stat.exists or vim_current_build.stdout != vim_latest_build
 
