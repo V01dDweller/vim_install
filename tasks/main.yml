@@ -91,6 +91,7 @@
           - git
           - make
         state: present
+        update_cache: true
       when: detected_os is search('Ubuntu')
 
     - name: Cloning Vim Github repo
