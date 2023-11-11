@@ -1,6 +1,6 @@
 # vim_install
 
-**Last updated**: 12/26/2022<br>
+**Last updated**: 11/11/2023<br>
 
 Ansible role. Installs Vim from source-master on EL 7, Alma Linux 8 or Ubuntu Linux to
 `/usr/local/bin/vim`.
