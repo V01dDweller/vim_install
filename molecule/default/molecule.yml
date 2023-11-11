@@ -1,0 +1,10 @@
+# file: molecule/default/molecule.yml
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: centos7
+    image: 'centos:7.9.2009'
+...
