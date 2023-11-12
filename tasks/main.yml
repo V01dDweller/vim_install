@@ -20,13 +20,12 @@
   ansible.builtin.debug:
     msg: '{{ vim_tags.json[0].name }}'
 
-# These tasks split the latest GitHub tag in order to to pinch the 4 digit
-# build number from the end
+# Pinch the 4 digit build number from the end of the tag
 - name: Setting vim_latest_build_unplit fact
   ansible.builtin.set_fact:
     vim_latest_tag: '{{ vim_tags.json[0].name | split(".") }}'
 
-# This task saves that 4-digit build number
+# Save the 4-digit build number
 - name: Setting vim_latest_build fact
   ansible.builtin.set_fact:
     vim_latest_build: '{{ vim_latest_tag[2] }}'
@@ -40,8 +39,7 @@
     path: /usr/local/bin/vim
   register: vimcheck
 
-# This tasks saves the 4-digit build number from the installed instance in
-# one step
+# This tasks saves the 4-digit build number from the installed instance
 - name: Checking vim version
   ansible.builtin.shell: |
     set -o pipefail
