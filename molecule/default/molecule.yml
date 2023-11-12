@@ -9,4 +9,11 @@ platforms:
     image: 'centos:7.9.2009'
   - name: almalinux8
     image: 'almalinux:8'
+
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      stdout_callback: community.general.yaml
+      stderr_callback: community.general.yaml
 ...
