@@ -61,7 +61,7 @@
   when: not vimcheck.stat.exists or
         vim_current_build.stdout != vim_latest_build
   ansible.builtin.debug:
-    msg: "Vim needs updating"
+    msg: "Vim not in /usr/local/bin or needs updating"
 
 - name: Installing Vim
   when: not vimcheck.stat.exists or
