@@ -2,6 +2,17 @@
 ---
 scenario:
   name: ubuntu
+  test_sequence:
+    - destroy
+    # - dependency
+    - syntax
+    - create
+    # - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    - destroy
 
 dependency:
   name: galaxy
