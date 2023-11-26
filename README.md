@@ -1,7 +1,8 @@
 # vim_install
 
-Ansible role. Installs Vim from source-master on EL 7, Alma Linux 8 or Ubuntu Linux to
-`/usr/local/bin/vim`.
+Ansible role. Installs Vim from source-master on EL 7, Alma Linux 8, Ubuntu
+Linux to `/usr/local/bin/vim`. Tested with CentOS 7, AlmaLinux 8, Ubuntu 20.04
+(focal) and Ubuntu 22.04 (jammy)
 
 ## Requirements
 
