@@ -1,0 +1,38 @@
+# file: molecule/centos7/molecule.yml
+---
+scenario:
+  name: centos7
+  test_sequence:
+    - destroy
+    # - dependency
+    - syntax
+    - create
+    # - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    - destroy
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+  - name: centos7
+    image: 'centos:7.9.2009'
+    groups:
+      - el
+
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      stdout_callback: community.general.yaml
+      stderr_callback: community.general.yaml
+  inventory:
+    host_vars:
+      ansible_user: ansible
+...

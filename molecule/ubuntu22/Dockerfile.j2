@@ -1,0 +1,25 @@
+# Molecule managed
+# file: molecule/ubuntu22/Dockerfile.j2
+
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+{% if item.env is defined %}
+{% for var, value in item.env.items() %}
+{% if value %}
+ENV {{ var }} {{ value }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+RUN  apt update
+RUN  apt -y install sudo python3 ca-certificates openssl
+RUN  adduser --disabled-password --gecos "" ansible
+RUN  usermod -aG sudo ansible
+RUN  sed -i "/^%${SUDO_GROUP}/s/ALL\$/NOPASSWD:ALL/g" /etc/sudoers
+
+USER ansible
+WORKDIR /home/ansible
