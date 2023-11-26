@@ -5,6 +5,7 @@
   gather_facts: false
   roles:
     - role: vim_install
+      become: true
       tags: vim
 ...
 # vim: ft=ansible syntax=yaml.ansible:
