@@ -1,7 +1,7 @@
 # file: molecule/default/molecule.yml
 ---
 scenario:
-  name: ubuntu22
+  name: default
   create_sequence:
     # - dependency
     - create
