@@ -23,8 +23,7 @@ driver:
 platforms:
   - name: centos7
     image: 'centos:7.9.2009'
-    groups:
-      - el
+    pre_build_image: false
 
 provisioner:
   name: ansible
