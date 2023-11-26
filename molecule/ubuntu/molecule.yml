@@ -23,9 +23,11 @@ driver:
 platforms:
   - name: ubuntu20
     image: 'ubuntu:focal'
+    pre_build_image: false
 
   - name: ubuntu22
     image: 'ubuntu:jammy'
+    pre_build_image: false
 
 provisioner:
   name: ansible
