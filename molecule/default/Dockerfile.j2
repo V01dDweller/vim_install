@@ -15,6 +15,10 @@ ENV {{ var }} {{ value }}
 {% endfor %}
 {% endif %}
 
+# Base on the documentation:
+#
+#  https://ansible.readthedocs.io/projects/molecule/examples/#customizing-the-docker-image-used-by-a-scenarioplatform
+
 ENV ANSIBLE_USER=ansible DEPLOY_GROUP=deployer
 ENV SUDO_GROUP={{'sudo' if 'ubuntu' in item.image else 'wheel' }}
 ENV PACKAGE_MANAGER={{'apt' if 'ubuntu' in item.image else 'yum' }}
