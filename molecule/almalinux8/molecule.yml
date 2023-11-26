@@ -13,6 +13,10 @@ scenario:
     # - side_effect
     - verify
     - destroy
+  destroy_sequence:
+    # - dependency
+    # - cleanup
+    - destroy
 
 dependency:
   name: galaxy
