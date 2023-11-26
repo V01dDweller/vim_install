@@ -2,6 +2,15 @@
 ---
 scenario:
   name: ubuntu
+  create_sequence:
+    # - dependency
+    - create
+    # - prepare
+  converge_sequence:
+    # - dependency
+    - create
+    # - prepare
+    - converge
   test_sequence:
     - destroy
     # - dependency
@@ -12,6 +21,10 @@ scenario:
     - idempotence
     # - side_effect
     - verify
+    - destroy
+  destroy_sequence:
+    # - dependency
+    # - cleanup
     - destroy
 
 dependency:
