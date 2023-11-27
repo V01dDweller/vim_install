@@ -122,6 +122,6 @@
     dest: /etc/profile.d/vim.sh
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
 ...
 # vim: ft=ansible syntax=yaml.ansible
