@@ -79,7 +79,8 @@
         state: installed
       when: detected_os is search('CentOS 7') or
             detected_os is search('RedHat 7') or
-            detected_os is search('AlmaLinux 8')
+            detected_os is search('AlmaLinux 8') or
+            detected_os is search('AlmaLinux 9')
 
     - name: Installing Ubuntu dependencies
       ansible.builtin.apt:
