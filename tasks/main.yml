@@ -48,24 +48,24 @@
     | awk '{print $3}'|sed 's/1-//'
   args:
     executable: /bin/bash
-  register: vim_current_build
+  register: vim_installed_build
   changed_when: false
   when: vimcheck.stat.exists
 
 - name: Displaying current vim build
   ansible.builtin.debug:
-    msg: '{{ vim_current_build.stdout }}'
+    msg: '{{ vim_installed_build.stdout }}'
   when: vimcheck.stat.exists
 
 - name: Comparing vim versions
   when: not vimcheck.stat.exists or
-        vim_current_build.stdout != vim_latest_build
+        not vim_installed_build.stdout in vim_latest_build
   ansible.builtin.debug:
     msg: "Vim not in /usr/local/bin or needs updating"
 
 - name: Installing Vim
   when: not vimcheck.stat.exists or
-        vim_current_build.stdout != vim_latest_build
+        not vim_installed_build.stdout in vim_latest_build
   block:
     - name: Installing Enterprise Linux dependencies
       ansible.builtin.yum:
