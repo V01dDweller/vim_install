@@ -71,4 +71,4 @@ BSD
 
 By V01dDweller
 
-[modeline]: # ( vim: set textwidth=78 colorcolumn=80: )
+[modeline]: # ( vim: set number relativenumber textwidth=78 colorcolumn=80: )
