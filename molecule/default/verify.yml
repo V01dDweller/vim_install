@@ -3,12 +3,71 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: Check if Vim is Installed
+    - name: Retrieving vim tags from GitHub
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/vim/vim/tags
+        method: GET
+        status_code: 200
+      register: vim_tags
+    
+    - name: Displaying most recent tag
+      ansible.builtin.debug:
+        msg: '{{ vim_tags.json[0].name }}'
+    
+    # Pinch the 4 digit build number from the end of the tag
+    - name: Setting vim_latest_tag fact
+      ansible.builtin.set_fact:
+        vim_latest_tag: '{{ vim_tags.json[0].name | split(".") }}'
+    
+    # Save the 4-digit build number
+    - name: Setting vim_latest_build fact
+      ansible.builtin.set_fact:
+        vim_latest_build: '{{ vim_latest_tag[2] }}'
+    
+    - name: Displaying vim_latest_build
+      ansible.builtin.debug:
+        msg: '{{ vim_latest_build }}'
+    
+    - name: Checking for Vim in /usr/local/bin
       ansible.builtin.stat:
         path: /usr/local/bin/vim
-      register: vim_check
+      register: vimcheck
+    
+    # This tasks saves the 4-digit build number from the installed instance
+    - name: Checking vim version
+      ansible.builtin.shell: |
+        set -o pipefail
+        /usr/local/bin/vim --version \
+        | grep "Included patches" \
+        | awk '{print $3}'|sed 's/1-//'
+      args:
+        executable: /bin/bash
+      register: vim_installed_build
+      changed_when: false
+      when: vimcheck.stat.exists
+    
+    - name: Displaying current vim build
+      ansible.builtin.debug:
+        msg: '{{ vim_installed_build.stdout }}'
+      when: vimcheck.stat.exists
+    
+    # - name: Comparing vim versions
+    #   when: not vimcheck.stat.exists or
+    #         not vim_installed_build.stdout in vim_latest_build
+    #   ansible.builtin.debug:
+    #     msg: "Vim not in /usr/local/bin or needs updating"
+    
+    #######################################
+    # - name: Check if Vim is Installed
+    #   ansible.builtin.stat:
+    #     path: /usr/local/bin/vim
+    #   register: vim_check
 
-    - name: Assert that Vim is installed
+    - name: Assert that Vim is installed and the correct version
       ansible.builtin.assert:
-        that: vim_check.stat.exists
+        that:
+          - vimcheck.stat.exists
+          - vim_installed_build.stdout in vim_latest_build
+        fail_msg: Vim is not install or not the correct version
+        success_msg: Vim is installed and the latest version
 ...
