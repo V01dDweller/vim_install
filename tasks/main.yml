@@ -21,7 +21,7 @@
     msg: '{{ vim_tags.json[0].name }}'
 
 # Pinch the 4 digit build number from the end of the tag
-- name: Setting vim_latest_build_unplit fact
+- name: Setting vim_latest_tag fact
   ansible.builtin.set_fact:
     vim_latest_tag: '{{ vim_tags.json[0].name | split(".") }}'
 
