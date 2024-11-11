@@ -100,9 +100,9 @@ ansible-playbook vim_install.yml
 
 ```bash
 $ vim -version
-VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Aug  4 2022 21:28:37)
+VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Nov 11 2024 20:26:13)
 Garbage after option argument: "-version"
-More info with: "vim -h
+More info with: "vim -h"
 ```
 
 ## License
