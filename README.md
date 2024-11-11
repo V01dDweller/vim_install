@@ -88,15 +88,15 @@ touch vim_install.yml
       tags: vim
 ```
 
-### 3. Run the Playbook
+### 2. Run the Playbook
 
-```cmd
+```bash
 ansible-playbook vim_install.yml
 ```
 
 ### 4. Validate
 
-```cmd
+```bash
 $ vim -version
 VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Aug  4 2022 21:28:37)
 Garbage after option argument: "-version"
