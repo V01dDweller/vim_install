@@ -1,6 +1,8 @@
 # vim_install
 
 ![Ansible Role](https://img.shields.io/ansible/role/d/v01ddweller/vim_install)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/v01dDweller/vim_install)
+
 
 [RIP Bram
 Moolenar](https://arstechnica.com/gadgets/2023/08/bram-moolenaar-creator-of-the-beloved-vim-text-editor-has-passed-away/)
