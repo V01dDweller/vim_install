@@ -1,9 +1,9 @@
 # vim_install
 
+![Ansible Role](https://img.shields.io/ansible/role/d/v01ddweller/vim_install)
+
 [RIP Bram
 Moolenar](https://arstechnica.com/gadgets/2023/08/bram-moolenaar-creator-of-the-beloved-vim-text-editor-has-passed-away/)
-
-![Ansible Role](https://img.shields.io/ansible/role/d/v01ddweller/vim_install)
 
 This Ansible role installs the latest version of Vim from [ source
 ](https://github.com/vim/vim) on the following Linux distributions:
