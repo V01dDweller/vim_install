@@ -16,11 +16,11 @@ Vim is installed to `/usr/local/bin/vim,` and the role creates a
 `/etc/profile.d/vim.sh` file to ensure that it takes precedence over
 package-managed instances.
 
-As of 2024 it is probably simpler to install Vim via the native package
-manager as most modern distributions have a recent enough version of Vim
+As of 2024 it is probably simpler to install Vim via the default package
+manager as most modern distributions make a recent enough version of Vim
 available. The original motivation for this project was to install newer
-versions of Vim on CentOS 7 which was version locked to the increasingly dated
-version 7.4.
+versions of Vim on the once popular, but now end-of-life, CentOS 7 which was
+version locked to version 7.4.
 
 Now this role is now more of a learning exercise for
 [Ansible](https://www.ansible.com/), [Ansible
