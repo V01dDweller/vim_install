@@ -22,8 +22,10 @@ available. The original motivation for this project was to install newer
 versions of Vim on CentOS 7 which was version locked to the increasingly dated
 version 7.4.
 
-Now this role is now more of a learning exercise for Ansible, Ansible Galaxy
-and Ansible Molecule.
+Now this role is now more of a learning exercise for
+[Ansible](https://www.ansible.com/), [Ansible
+Galaxy](https://galaxy.ansible.com) and [Ansible
+Molecule](https://ansible.readthedocs.io/projects/molecule/).
 
 ## Requirements
 
