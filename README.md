@@ -29,7 +29,7 @@ Molecule](https://ansible.readthedocs.io/projects/molecule/).
 
 ## Requirements
 
-* Ansible user on target system must have sudo to root
+* sudo-to-root for Ansible user on target host.
 
 ## Dependencies
 
