@@ -10,7 +10,7 @@ This Ansible role installs the latest version of Vim from [ source
 * Ubuntu 20.04, 22.04 and 24.04
 
 It will probably work for intermediate or alternate versions of the above, for
-example, CentOS 8, RHEL 9, Fedora 34+, Ubuntu 24.10, etc..
+example, CentOS Stream 8, RHEL 9, Fedora 34+, Ubuntu 24.10, etc..
 
 Vim is installed to `/usr/local/bin/vim,` and the role creates a
 `/etc/profile.d/vim.sh` file to ensure that it takes precedence over
